@@ -24,7 +24,9 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = get_user_model()
-        fields = ["id", "email", "username", "last_login"]
+        exclude = (
+            'is_staff', 'is_active', 'is_superuser', 'password', 'last_login',
+        )
 
 
 class TokenSerializer(serializers.Serializer):
